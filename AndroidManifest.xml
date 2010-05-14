@@ -19,30 +19,23 @@ limitations under the License.
           package="org.zeroxlab.util.tscal"
           android:sharedUserId="android.uid.system">
   <uses-permission android:name="android.permission.SET_ALWAYS_FINISH" />
-  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
   <application android:icon="@drawable/icon" android:label="@string/app_name">
-
     <activity android:name=".TSCalibration"
               android:label="Calibration"
+              android:launchMode="standard"
               android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
               android:configChanges="keyboard|keyboardHidden|navigation|orientation">
-
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
-
     </activity>
-
-    <receiver android:name="StartupIntentReceiver" >
-
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
+    <activity android:name=".TSCalibrationStartup">
+      <intent-filter android:priority="100">
+        <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.HOME" />
+        <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
-
-    </receiver>
-
+    </activity>
   </application>
 </manifest>

@@ -15,24 +15,37 @@
  */
 package org.zeroxlab.util.tscal;
 
-import android.content.BroadcastReceiver;
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 
 import java.io.File;
 
-// Added to allow for automatic startup
-public class StartupIntentReceiver extends BroadcastReceiver {
+public class TSCalibrationStartup extends Activity {
 
     private static String cal_path = "/data/misc/tscal/pointercal";
 
-    @Override public void onReceive(Context context, Intent intent) {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         File calFile = new File(cal_path);
         if (!calFile.exists()) {
-            Intent starterIntent = new Intent(context, TSCalibration.class);
-            starterIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(starterIntent);
+            Intent starterIntent = new Intent(this, TSCalibration.class);
+            startActivityForResult(starterIntent, 0);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // remove this activity from the package manager.
+        PackageManager pm = getPackageManager();
+        ComponentName name = new ComponentName(this, TSCalibrationStartup.class);
+        pm.setComponentEnabledSetting(name, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0);
+        finish();
     }
 }

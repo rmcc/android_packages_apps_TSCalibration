@@ -60,7 +60,8 @@ public class TSCalibration extends Activity {
     {
         if (mTSCalibrationView.isFinished()) {
             mTSCalibrationView.dumpCalData(FILE);
-            this.finish();
+            setResult(0);
+            finish();
         } else {
             setContentView(mTSCalibrationView);
         }
