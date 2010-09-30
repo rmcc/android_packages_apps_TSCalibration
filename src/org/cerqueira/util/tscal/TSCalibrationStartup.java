@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zeroxlab.util.tscal;
+package org.cerqueira.util.tscal;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -21,7 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-
+import android.util.Log;
 import java.io.File;
 
 public class TSCalibrationStartup extends Activity {
@@ -36,7 +36,12 @@ public class TSCalibrationStartup extends Activity {
         if (!calFile.exists()) {
             Intent starterIntent = new Intent(this, TSCalibration.class);
             startActivityForResult(starterIntent, 0);
-        }
+        } else {
+            PackageManager pm = getPackageManager();
+            ComponentName name = new ComponentName(this, TSCalibrationStartup.class);
+            pm.setComponentEnabledSetting(name, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0);
+            finish();
+       }
     }
 
     @Override

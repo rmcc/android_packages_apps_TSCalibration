@@ -16,13 +16,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.zeroxlab.util.tscal"
+          package="org.cerqueira.util.tscal"
           android:sharedUserId="android.uid.system">
   <uses-permission android:name="android.permission.SET_ALWAYS_FINISH" />
   <application android:icon="@drawable/icon" android:label="@string/app_name">
     <activity android:name=".TSCalibration"
-              android:label="Calibration"
+              android:label="Screen Calibration"
               android:launchMode="standard"
+              android:screenOrientation="portrait"
               android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
               android:configChanges="keyboard|keyboardHidden|navigation|orientation">
       <intent-filter>

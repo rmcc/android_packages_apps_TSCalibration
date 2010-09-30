@@ -31,7 +31,7 @@ limitations under the License.
               android:textSize="25px"
               android:text="@string/done"/>
   </LinearLayout>
-  <org.zeroxlab.util.tscal.TargetView android:id="@+id/lasttarget"
+  <org.cerqueira.util.tscal.TargetView android:id="@+id/lasttarget"
                                       android:gravity="center"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"/>

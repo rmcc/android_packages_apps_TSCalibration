@@ -17,6 +17,6 @@ limitations under the License.
 -->
 <resources>
   <string name="app_name">Calibration</string>
-  <string name="intro">Touch Screen Calibration:\nPlease tap the circle.</string>
+  <string name="intro">Touch Screen Calibration:\nTap the circle to begin</string>
   <string name="done">Calibration is done.</string>
 </resources>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zeroxlab.util.tscal;
+package org.cerqueira.util.tscal;
 
 import java.io.File;
 import java.io.FileOutputStream;
